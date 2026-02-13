@@ -1,7 +1,7 @@
 :root{
   --void-bg: oklch(0.12 0.02 240);
   --green-power: oklch(0.85 0.3 145);
-  --cian: oklch(0.5 0.2 200);
+  --cian: oklch(76.945% 0.13135 210.06);
 }
 
 html{
@@ -13,7 +13,8 @@ body{
   margin: 0;
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden; 
+  overflow-y: auto;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='0.04' filter='url(%23n)'/%3E%3C/svg%3E"),
     radial-gradient(circle at 50% 50%, oklch(0.15 0.03 240) 0%, transparent 100%);
     color: white;
@@ -22,7 +23,7 @@ body{
 
 body::before{
   content: "";
-  position: absolute;
+  position: fixed;
   width: 60vmax;
   height: 60vmax;
   top: 50%;
@@ -43,7 +44,7 @@ body::before{
 
 body::after{
   content: "";
-  position: absolute;
+  position: fixed;
   width: 50vmax;
   height: 50vmax;
   top: 10%;
@@ -168,4 +169,300 @@ body::after{
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+.projects-section {
+  padding: 8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--cian);
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+}
+
+.project-card {
+  background: rgba(59, 61, 59, 0.377);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 24px;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--green-power);
+}
+
+.project-number {
+  font-family: 'Courier New', monospace;
+  color: var(--green-power);
+  opacity: 0.5;
+  font-size: 0.9rem;
+}
+
+.project-name {
+  font-size: 1.8rem;
+  margin: 1rem 0;
+  background: linear-gradient(90deg, #fff, var(--cian));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.project-tech {
+  display: flex;
+  gap: 0.8rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.project-tech li {
+  font-size: 0.7rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--green-power);
+  color: var(--green-power);
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.link-btn {
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.link-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--cian);
+}
+
+.link-btn.primary {
+  background: var(--cian);
+  border-color: var(--cian);
+  color: var(--void-bg);
+}
+
+.link-btn.primary:hover {
+  background: var(--green-power);
+  border-color: var(--green-power);
+  transform: scale(1.05);
+}
+
+.reveal-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 
+        opacity 0.8s ease-out, 
+        transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Añadir a tu CSS --- */
+
+.about-section {
+  padding: 10rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .about-container { grid-template-columns: 1fr; }
+}
+
+.about-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.about-text b, .about-text strong {
+  color: var(--green-power);
+}
+
+.skills-subtitle {
+  color: var(--cian);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.skill-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  border-color: var(--green-power);
+  color: var(--green-power);
+  background: rgba(133, 255, 145, 0.05);
+  transform: translateY(-3px);
+}
+
+.education-section {
+    padding: 8rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.education-list {
+    position: relative;
+    border-left: 2px solid rgba(154, 241, 241, 0.2); /* Línea vertical sutil */
+    padding-left: 2rem;
+    margin-left: 1rem;
+}
+
+.education-item {
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.education-dot {
+    position: absolute;
+    left: -2.65rem;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    background: var(--green-power);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--green-power);
+}
+
+.education-date {
+    font-family: 'Courier New', monospace;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.education-title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.education-institution {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.education-desc {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.footer {
+    margin-top: 5rem;
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.footer p {
+    font-family: 'Courier New', monospace;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--cian);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--green-power);
+    transition: width 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--green-power);
+    text-shadow: 0 0 10px var(--green-power);
+}
+
+.footer-links a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
